@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<style>
+    #box {
+        margin-left: 0px;
+        height: 900px;
+        width: 1300px;
+        background-color: rgb(241, 246, 250);
+    }
+
+    #box ul {
+        display: flex;
+        flex-wrap: wrap;
+        position: absolute;
+        top: 20px;
+        margin-left: 280px;
+        
+    }
+
+    #box li {
+        padding: 3px;
+        list-style: none;
+        margin-right: 15px;
+        /* border: 1px solid #eee; */
+        width: 190px;
+        height: 370px;
+        background-color: white;
+    }
+
+    #dess {
+        color: rgb(159, 165, 171);
+        display: block;
+        /*内联对象需加*/
+        width: 180px;
+        word-break: keep-all;
+        /* 不换行 */
+        white-space: nowrap;
+        /* 不换行 */
+        overflow: hidden;
+        /* 内容超出宽度时隐藏超出部分的内容 */
+        text-overflow: ellipsis;
+        /*溢出时显示省略标记...；需与overflow:hidden;一起使用*/
+    }
+
+    #box img {
+        width: 180px;
+        height: 200px;
+    }
+
+    #box1 {
+        float: left;
+        height: 445px;
+        width: 140px;
+        margin-left: 5px;
+        margin-top: 40px;
+        background-color: rgb(241, 246, 250);
+    }
+    #li2{
+        padding: 3px;
+        list-style: none;
+        margin-right: 30px;
+        /* border: 1px solid #eee; */
+        width: 190px;
+        margin-top: 400px;
+        background-color: white;
+    }
+</style>
+
+<body>
+    <div id="app"></div>
+    <template id="root">
+        <div class="" id="box1">
+            <img src="images/Redmi.png" alt="">
+        </div>
+        <div class="" id="box">
+
+            <ul>
+                <li v-for="v in phoneList" :key="v.id">
+                    <br><br>
+                    <img v-bind:src="v.img" alt="">
+                    <p style="text-align: center;">{{v.title}}</p>
+                    <p id="dess">{{v.des}}</p>
+                    <p style="text-align: center;color:rgb(225, 120, 21)">{{v.price}}</p>
+                </li>
+    
+            </ul>
+            <ul>
+                <li v-for="v in phoneList1" :key="v.id" id="li2">
+                    <br><br>
+                    <img v-bind:src="v.img" alt="">
+                    <p style="text-align: center;">{{v.title}}</p>
+                    <p id="dess">{{v.des}}</p>
+                    <p style="text-align: center;color:rgb(225, 120, 21)">{{v.price}}</p>
+                </li>
+            </ul>
+
+        </div>
+    </template>
+
+</body>
+<!-- <script> -->
+<!-- <script type="module"> -->
+
+<script>
+    const app = Vue.createApp({
+        template: "#root",
+        data() {
+
+            return {
+                phoneList: [
+                    { id: '01', img: 'images/Redmi 12C.png', title: 'Redmi 12C', des: '高性能长续航，5000万像素超清双摄，全新多彩配色', price: '699 元起' },
+                    { id: '02', img: 'images/Redmi K60.png', title: 'Redmi K60', des: '狠快狠强，狠旗舰！2023，第一台梦幻手机', price: '2999 元起' },
+                    { id: '03', img: 'images/Redmi K60 Pro.png', title: 'Redmi K60 Pro', des: '第二代骁龙8丨2K 高光屏丨VC 液冷散热丨索尼IMX800 大底相机+小米影像大脑2.0丨OIS光学防抖丨120W神仙秒充+30W无线秒充丨5000mAh大电量丨屏下指纹解锁', price: '3299 元起' },
+                    { id: '04', img: 'images/Redmi Note 12 Pro 极速版.png', title: 'Redmi Note 12 Pro', des: 'Redmi Note 12 Pro 极速版', price: '1699 元起' },
+                    // { id: '05', img: 'images/Xiaomi 13 限量定制色.jpg', title: 'Xiaomi 13 限量定制色', des: '第二代骁龙8｜徕卡专业光学镜头｜徕卡原生双画质｜徕卡75mm长焦 | 超窄边屏幕｜67W澎湃秒充', price: '4999 元' },
+                    // { id: '06', img: 'images/Xiaomi 13 Pro.png', title: 'Xiaomi 13 Pro', des: '第二代骁龙8｜2K OLED 屏幕 | 徕卡专业光学镜头｜徕卡原生双画质｜徕卡75mm浮动长焦｜120W澎湃秒充', price: '4999 元起' },
+                    // { id: '07', img: 'images/Xiaomi 13.png', title: 'Xiaomi 13', des: '第二代骁龙8｜徕卡专业光学镜头｜徕卡原生双画质｜徕卡75mm长焦 | 超窄边屏幕｜67W澎湃秒充', price: '4599 元起' },
+                    // { id: '08', img: 'images/Redmi Note 12 5G.jpg', title: 'Redmi Note 12 5G', des: '三星 OLED 护眼屏｜骁龙 5G 芯｜5000mAh 电量', price: '1199 元起' },
+                ],
+                phoneList1: [
+                    { id: '05', img: 'images/Xiaomi 13 限量定制色.png', title: 'Xiaomi 13 限量定制色', des: '第二代骁龙8｜徕卡专业光学镜头｜徕卡原生双画质｜徕卡75mm长焦 | 超窄边屏幕｜67W澎湃秒充', price: '4999 元' },
+                    { id: '06', img: 'images/Xiaomi 13 Pro.png', title: 'Xiaomi 13 Pro', des: '第二代骁龙8｜2K OLED 屏幕 | 徕卡专业光学镜头｜徕卡原生双画质｜徕卡75mm浮动长焦｜120W澎湃秒充', price: '4999 元起' },
+                    { id: '07', img: 'images/Xiaomi 13.png', title: 'Xiaomi 13', des: '第二代骁龙8｜徕卡专业光学镜头｜徕卡原生双画质｜徕卡75mm长焦 | 超窄边屏幕｜67W澎湃秒充', price: '4599 元起' },
+                    { id: '08', img: 'images/Redmi Note 12 5G.png', title: 'Redmi Note 12 5G', des: '三星 OLED 护眼屏｜骁龙 5G 芯｜5000mAh 电量', price: '1199 元起' },
+
+                ]
+            }
+        }
+    })
+    app.mount("#app")
+</script>
+
+</html>
